@@ -1,1003 +1,1489 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wasi Uddin Mahmud | Naval Architect & Shipbuilding Project Engineer</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            950: '#070B19',
-                            900: '#0B132B',
-                            800: '#1C2541',
-                            700: '#2A365C',
-                            600: '#3A4B7C'
-                        },
-                        cyan: {
-                            brand: '#00F5D4',
-                            glow: '#00BBF9',
-                            accent: '#38BDF8'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'JetBrains Mono', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wasi Uddin Mahmud | Naval Architect & Shipbuilding Project Engineer</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- FontAwesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a1118;
+      --bg-card: #0f1923;
+      --bg-card-hover: #162432;
+      --navy-deep: #060b10;
+      --border-blue: #1b2e4b;
+      --border-active: #00f2fe;
+      --cyan-bright: #00f2fe;
+      --cyan-dim: #00b4d8;
+      --cyan-glow: rgba(0, 242, 254, 0.15);
+      --text-light: #e2e8f0;
+      --text-muted: #8492a6;
+      --text-dim: #475569;
+      --accent-gold: #ffb703;
+      --grid-line: rgba(0, 242, 254, 0.04);
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #070B19;
-            color: #E2E8F0;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        /* Blueprint Engineering Pattern Overlay */
-        .blueprint-grid {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(0, 245, 212, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 245, 212, 0.04) 1px, transparent 1px);
-        }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
 
-        .blueprint-grid-dense {
-            background-size: 16px 16px;
-            background-image: 
-                linear-gradient(to right, rgba(0, 245, 212, 0.06) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 245, 212, 0.06) 1px, transparent 1px);
-        }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--navy-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--border-blue); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan-dim); }
 
-        .glass-panel {
-            background: rgba(11, 19, 43, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 245, 212, 0.18);
-        }
+    /* Layout Utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-        .glass-panel-hover:hover {
-            border-color: rgba(0, 245, 212, 0.45);
-            box-shadow: 0 10px 30px -10px rgba(0, 245, 212, 0.22);
-            transform: translateY(-3px);
-        }
+    section {
+      padding: 6rem 0;
+      border-bottom: 1px solid var(--border-blue);
+    }
 
-        .hud-corner {
-            position: relative;
-        }
-        .hud-corner::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; width: 10px; height: 10px;
-            border-top: 2px solid #00F5D4;
-            border-left: 2px solid #00F5D4;
-            z-index: 10;
-        }
-        .hud-corner::after {
-            content: '';
-            position: absolute;
-            bottom: -2px; right: -2px; width: 10px; height: 10px;
-            border-bottom: 2px solid #00F5D4;
-            border-right: 2px solid #00F5D4;
-            z-index: 10;
-        }
+    /* Section Headers */
+    .section-tag {
+      font-family: var(--font-mono);
+      color: var(--cyan-bright);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #070B19; }
-        ::-webkit-scrollbar-thumb { background: #1C2541; border-radius: 4px; border: 1px solid rgba(0, 245, 212, 0.2); }
-        ::-webkit-scrollbar-thumb:hover { background: #00F5D4; }
-    </style>
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--cyan-bright);
+      box-shadow: 0 0 10px var(--cyan-bright);
+    }
+
+    /* Header / Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 17, 24, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-blue);
+      padding: 0.75rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      background: var(--bg-card);
+      border: 1px solid var(--cyan-bright);
+      color: var(--cyan-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--cyan-bright);
+      font-family: var(--font-mono);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      transition: all 0.3s;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan-bright);
+      text-shadow: 0 0 8px var(--cyan-glow);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--cyan-bright);
+      color: var(--cyan-bright);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--cyan-glow);
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .btn-solid {
+      background: var(--cyan-bright);
+      color: var(--navy-deep);
+      border: 1px solid var(--cyan-bright);
+    }
+
+    .btn-solid:hover {
+      background: #38ef7d;
+      border-color: #38ef7d;
+      box-shadow: 0 0 15px rgba(56, 239, 125, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      padding-top: 8rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(0, 242, 254, 0.05);
+      border: 1px solid var(--border-blue);
+      border-left: 3px solid var(--cyan-bright);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--cyan-bright);
+      margin-bottom: 1.5rem;
+    }
+
+    .status-pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan-bright);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan-bright);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-mono);
+      color: var(--cyan-dim);
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-blue);
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .hero-profile-frame {
+      position: relative;
+      border: 1px solid var(--border-blue);
+      background: var(--bg-card);
+      padding: 1rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-profile-frame::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: 20px;
+      height: 20px;
+      border-top: 2px solid var(--cyan-bright);
+      border-left: 2px solid var(--cyan-bright);
+    }
+
+    .hero-profile-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      width: 20px;
+      height: 20px;
+      border-bottom: 2px solid var(--cyan-bright);
+      border-right: 2px solid var(--cyan-bright);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%) contrast(105%);
+      border: 1px solid var(--border-blue);
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img-frame {
+      position: relative;
+      border: 1px solid var(--border-blue);
+      background: var(--bg-card);
+      padding: 0.75rem;
+    }
+
+    .about-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .detail-item {
+      background: var(--bg-card);
+      padding: 1rem;
+      border: 1px solid var(--border-blue);
+      border-left: 3px solid var(--cyan-bright);
+    }
+
+    .detail-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .detail-value {
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    /* Experience Section */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 160px;
+      width: 2px;
+      background: var(--border-blue);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .timeline-date {
+      width: 130px;
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--cyan-bright);
+      padding-top: 0.25rem;
+    }
+
+    .timeline-node {
+      position: absolute;
+      left: 154px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 2px solid var(--cyan-bright);
+      box-shadow: 0 0 10px var(--cyan-bright);
+    }
+
+    .timeline-content {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-content:hover {
+      border-color: var(--cyan-bright);
+    }
+
+    .timeline-role {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: #fff;
+    }
+
+    .timeline-company {
+      font-family: var(--font-mono);
+      color: var(--cyan-dim);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-bullets {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .timeline-bullets li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-bullets li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--cyan-bright);
+      font-family: var(--font-mono);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--cyan-bright);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-img-wrapper {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-deep);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.05);
+    }
+
+    .project-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(10, 17, 24, 0.85);
+      border: 1px solid var(--cyan-bright);
+      color: var(--cyan-bright);
+      padding: 0.25rem 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+
+    .project-content {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(0, 242, 254, 0.05);
+      border: 1px solid var(--border-blue);
+      color: var(--cyan-dim);
+      padding: 0.2rem 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    /* Modal Drawer System */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(6, 11, 16, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 2rem 1rem;
+    }
+
+    .modal-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: var(--bg-card);
+      border: 1px solid var(--cyan-bright);
+      box-shadow: 0 0 30px var(--cyan-glow);
+      position: relative;
+      padding: 2.5rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: 1px solid var(--border-blue);
+      color: var(--cyan-bright);
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .modal-close:hover {
+      background: var(--cyan-bright);
+      color: var(--navy-deep);
+    }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .modal-img-card {
+      border: 1px solid var(--border-blue);
+      background: var(--navy-deep);
+      padding: 0.5rem;
+    }
+
+    .modal-img-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-img-caption {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      padding: 1.75rem;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--cyan-bright);
+      background: var(--bg-card-hover);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      color: var(--cyan-bright);
+      margin-bottom: 1rem;
+    }
+
+    .service-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills Section */
+    .skills-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    .skill-group-title {
+      font-family: var(--font-mono);
+      color: var(--cyan-bright);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-blue);
+      padding-bottom: 0.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      color: var(--text-light);
+      padding: 0.5rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-pill i {
+      color: var(--cyan-bright);
+    }
+
+    /* Research Section */
+    .pub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      border-left: 4px solid var(--cyan-bright);
+      padding: 2rem;
+    }
+
+    .pub-journal {
+      font-family: var(--font-mono);
+      color: var(--cyan-bright);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .pub-authors {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Education Section */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      padding: 2rem;
+    }
+
+    .edu-degree {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .edu-school {
+      font-family: var(--font-mono);
+      color: var(--cyan-dim);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .edu-grade {
+      display: inline-block;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid var(--border-blue);
+      color: var(--cyan-bright);
+      padding: 0.25rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-blue);
+      padding: 1.25rem;
+    }
+
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(0, 242, 254, 0.05);
+      border: 1px solid var(--cyan-bright);
+      color: var(--cyan-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .contact-text label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .contact-text a, .contact-text span {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy-deep);
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border-blue);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive Breakdown */
+    @media (max-width: 1024px) {
+      .hero-grid, .about-grid, .contact-grid, .skills-wrapper { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-img { height: 350px; }
+      .timeline::before { left: 0; }
+      .timeline-item { flex-direction: column; gap: 0.5rem; }
+      .timeline-date { text-align: left; width: auto; }
+      .timeline-node { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid, .edu-grid, .services-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
-<body class="blueprint-grid selection:bg-cyan-brand selection:text-navy-950 min-h-screen flex flex-col relative overflow-x-hidden">
+<body>
 
-    <!-- Top Engineering Status Bar -->
-    <div class="bg-navy-900 border-b border-cyan-brand/20 px-4 py-1.5 text-xs font-mono text-cyan-brand/80 flex justify-between items-center z-50">
-        <span class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-cyan-brand animate-pulse"></span>
-            NAVAL ARCHITECTURE & SHIPBUILDING HUB
-        </span>
-        <span class="hidden sm:inline text-slate-400">STATUS: OPEN FOR INTERNATIONAL OPPORTUNITIES</span>
-        <button onclick="toggleMediaManager()" class="text-xs bg-cyan-brand/10 hover:bg-cyan-brand hover:text-navy-950 text-cyan-brand px-3 py-0.5 rounded border border-cyan-brand/30 transition-all font-mono font-semibold flex items-center gap-1.5">
-            <i class="fa-solid fa-photo-film"></i> Media Manager
-        </button>
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="#home" class="logo">
+        <div class="logo-badge">WUM</div>
+        <div class="logo-text">
+          WASI UDDIN MAHMUD
+          <span>NAVAL ARCHITECT & PROJECT ENGINEER</span>
+        </div>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#home">01.//HOME</a></li>
+        <li><a href="#about">02.//ABOUT</a></li>
+        <li><a href="#experience">03.//EXPERIENCE</a></li>
+        <li><a href="#projects">04.//PROJECTS</a></li>
+        <li><a href="#services">05.//SERVICES</a></li>
+        <li><a href="#skills">06.//SKILLS</a></li>
+        <li><a href="#research">07.//RESEARCH</a></li>
+        <li><a href="#education">08.//EDUCATION</a></li>
+        <li><a href="#contact">09.//CONTACT</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-outline">INQUIRE</a>
+        <a href="#contact" class="btn btn-solid"><i class="fas fa-download"></i> CV</a>
+      </div>
     </div>
+  </header>
 
-    <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 glass-panel border-b border-cyan-brand/15">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <a href="#home" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/40 flex items-center justify-center font-mono font-bold text-cyan-brand text-lg group-hover:border-cyan-brand transition-all shadow-lg shadow-cyan-brand/10">
-                    WUM
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-bold tracking-wider text-white text-base leading-tight group-hover:text-cyan-brand transition-colors">WASI UDDIN MAHMUD</span>
-                    <span class="text-[10px] font-mono text-cyan-brand/80 tracking-widest uppercase">Naval Architect & Project Engineer</span>
-                </div>
-            </a>
-
-            <!-- Desktop Nav Links -->
-            <nav class="hidden xl:flex items-center space-x-5 text-xs font-mono tracking-wide text-slate-300">
-                <a href="#home" class="hover:text-cyan-brand transition-colors">01.//HOME</a>
-                <a href="#about" class="hover:text-cyan-brand transition-colors">02.//ABOUT</a>
-                <a href="#experience" class="hover:text-cyan-brand transition-colors">03.//EXPERIENCE</a>
-                <a href="#projects" class="hover:text-cyan-brand transition-colors">04.//PROJECTS</a>
-                <a href="#services" class="hover:text-cyan-brand transition-colors">05.//SERVICES</a>
-                <a href="#skills" class="hover:text-cyan-brand transition-colors">06.//SKILLS</a>
-                <a href="#research" class="hover:text-cyan-brand transition-colors">07.//RESEARCH</a>
-                <a href="#education" class="hover:text-cyan-brand transition-colors">08.//EDUCATION</a>
-                <a href="#contact" class="hover:text-cyan-brand transition-colors">09.//CONTACT</a>
-            </nav>
-
-            <!-- Actions -->
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="#contact" class="px-4 py-2 rounded text-xs font-mono font-semibold bg-cyan-brand/10 text-cyan-brand border border-cyan-brand/30 hover:bg-cyan-brand hover:text-navy-950 transition-all">
-                    INQUIRE
-                </a>
-                <a href="#contact" onclick="alert('Preparing Wasi Uddin Mahmud CV Download...')" class="px-4 py-2 rounded text-xs font-mono font-semibold bg-cyan-brand text-navy-950 hover:bg-cyan-glow transition-all shadow-md shadow-cyan-brand/20 flex items-center gap-1.5">
-                    <i class="fa-solid fa-download"></i> CV
-                </a>
-            </div>
-
-            <!-- Mobile Toggle -->
-            <button id="mobile-btn" class="xl:hidden text-slate-300 hover:text-cyan-brand p-2 text-xl">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </button>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-status">
+          <div class="status-pulse"></div>
+          AVAILABLE FOR INTERNATIONAL CONTRACTS & CONSULTANCY
+        </div>
+        <h1 class="hero-title">Naval Architect & Project Engineer</h1>
+        <div class="hero-subtitle">BSc BMU | MSc BUET (Candidate)</div>
+        <p class="hero-description">
+          Specializing in shipbuilding project management, package procurement, 3D marine piping design, structural finite element analysis, and CFD hydrodynamics.
+        </p>
+        <div class="nav-actions">
+          <a href="#projects" class="btn btn-solid"><i class="fas fa-ship"></i> VIEW TECHNICAL PROJECTS</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> GET IN TOUCH</a>
         </div>
 
-        <div id="mobile-menu" class="hidden xl:hidden px-6 py-4 bg-navy-900 border-b border-cyan-brand/20 space-y-3 font-mono text-sm">
-            <a href="#home" class="block py-1 hover:text-cyan-brand">01.// HOME</a>
-            <a href="#about" class="block py-1 hover:text-cyan-brand">02.// ABOUT</a>
-            <a href="#experience" class="block py-1 hover:text-cyan-brand">03.// EXPERIENCE</a>
-            <a href="#projects" class="block py-1 hover:text-cyan-brand">04.// PROJECTS</a>
-            <a href="#services" class="block py-1 hover:text-cyan-brand">05.// SERVICES</a>
-            <a href="#skills" class="block py-1 hover:text-cyan-brand">06.// SKILLS</a>
-            <a href="#research" class="block py-1 hover:text-cyan-brand">07.// RESEARCH</a>
-            <a href="#education" class="block py-1 hover:text-cyan-brand">08.// EDUCATION</a>
-            <a href="#contact" class="block py-1 hover:text-cyan-brand">09.// CONTACT</a>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">70T</div>
+            <div class="stat-label">Bollard Pull Tugs</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">36m</div>
+            <div class="stat-label">Research Vessel</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">48ft</div>
+            <div class="stat-label">Catamaran Piping</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1800</div>
+            <div class="stat-label">DWT Cargo Ship</div>
+          </div>
         </div>
-    </header>
-
-    <main class="flex-grow">
-
-        <!-- 1. HERO SECTION -->
-        <section id="home" class="relative py-16 lg:py-24 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-800 border border-cyan-brand/30 text-cyan-brand text-xs font-mono">
-                            <i class="fa-solid fa-compass-drafting"></i>
-                            Naval Architect & Shipbuilding Project Engineer
-                        </div>
-
-                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                            Wasi Uddin <br>
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-brand via-cyan-glow to-cyan-accent">Mahmud</span>
-                        </h1>
-
-                        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                            Specializing in shipbuilding project management, marine equipment procurement, 3D vessel modeling, marine piping systems, structural analysis (Abaqus/BV), and hydrodynamic CFD simulations.
-                        </p>
-
-                        <!-- Tech Indicators -->
-                        <div class="grid grid-cols-3 gap-3 pt-2 font-mono">
-                            <div class="p-3 rounded bg-navy-800/80 border border-cyan-brand/20 text-center">
-                                <span class="block text-xl font-bold text-cyan-brand">02 × 70T</span>
-                                <span class="text-[11px] text-slate-400">Payra Tugboats</span>
-                            </div>
-                            <div class="p-3 rounded bg-navy-800/80 border border-cyan-brand/20 text-center">
-                                <span class="block text-xl font-bold text-cyan-brand">BUET</span>
-                                <span class="text-[11px] text-slate-400">MSc Scholar</span>
-                            </div>
-                            <div class="p-3 rounded bg-navy-800/80 border border-cyan-brand/20 text-center">
-                                <span class="block text-xl font-bold text-cyan-brand">FEA / CFD</span>
-                                <span class="text-[11px] text-slate-400">Abaqus & Fluent</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                            <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded bg-cyan-brand text-navy-950 font-bold text-sm hover:bg-cyan-glow transition-all shadow-lg shadow-cyan-brand/20 flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-ship"></i> View Projects
-                            </a>
-                            <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded bg-navy-800 text-slate-200 border border-cyan-brand/30 hover:border-cyan-brand font-semibold text-sm transition-all text-center">
-                                Contact Me
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Hero Portrait Box -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="w-full max-w-md glass-panel p-5 rounded-xl hud-corner shadow-2xl relative">
-                            <div class="flex items-center justify-between pb-3 border-b border-cyan-brand/20 font-mono text-xs text-cyan-brand">
-                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-user-gear"></i> NAVAL ARCHITECT & ENGINEER</span>
-                                <span>PROFILE</span>
-                            </div>
-
-                            <div class="relative my-4 rounded bg-navy-950 border border-cyan-brand/30 overflow-hidden h-80 flex items-center justify-center group">
-                                <img id="hero-img-preview" src="https://placehold.co/600x800/0B132B/00F5D4?text=Wasi+Uddin+Mahmud" alt="Wasi Uddin Mahmud" class="w-full h-full object-cover object-top opacity-95 group-hover:scale-105 transition-transform duration-500">
-                                
-                                <div class="absolute bottom-3 left-3 bg-navy-900/90 border border-cyan-brand/40 px-3 py-1 rounded text-xs font-mono text-cyan-brand flex items-center gap-2">
-                                    <i class="fa-solid fa-circle-check text-xs"></i> WASI UDDIN MAHMUD
-                                </div>
-                            </div>
-
-                            <div class="pt-3 border-t border-cyan-brand/20 flex justify-between text-[11px] font-mono text-slate-400">
-                                <span>LOCATION: DHAKA, BANGLADESH</span>
-                                <span>SPECIALTY: SHIPBUILDING</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. ABOUT ME SECTION -->
-        <section id="about" class="py-20 bg-navy-900/60 border-y border-cyan-brand/10 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">02. Engineering Background</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">About Wasi Uddin Mahmud</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative w-full max-w-sm glass-panel p-4 rounded-xl hud-corner">
-                            <div class="aspect-[3/4] bg-navy-800 rounded border border-cyan-brand/30 overflow-hidden relative">
-                                <img id="about-portrait-img" src="https://placehold.co/600x800/0B132B/00F5D4?text=Wasi+Uddin+Mahmud" alt="Wasi Uddin Mahmud" class="w-full h-full object-cover object-top">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent opacity-70"></div>
-                                <div class="absolute bottom-3 left-3 right-3 text-center">
-                                    <span class="text-sm font-bold text-white block">Wasi Uddin Mahmud</span>
-                                    <span class="text-xs font-mono text-cyan-brand">Naval Architect & Project Engineer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7 space-y-6">
-                        <h3 class="text-2xl font-bold text-white">Shipbuilding Project Management & Marine Design</h3>
-                        
-                        <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
-                            I am a Naval Architect and Shipbuilding Project Engineer based in Bangladesh, dedicated to bridging international equipment procurement, vessel design, and on-site engineering execution. My work spans government tugboat procurement packages, resident shipyard oversight, 3D piping networks, and advanced finite element & CFD analysis.
-                        </p>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                            <div class="p-4 rounded bg-navy-800/60 border border-cyan-brand/20">
-                                <h4 class="font-bold text-cyan-brand text-sm mb-1"><i class="fa-solid fa-list-check mr-2"></i>Procurement & Project Management</h4>
-                                <p class="text-xs text-slate-400">Procurement package tracking, OEM coordination, technical documentation, and Harbour Acceptance Tests (HAT).</p>
-                            </div>
-                            <div class="p-4 rounded bg-navy-800/60 border border-cyan-brand/20">
-                                <h4 class="font-bold text-cyan-brand text-sm mb-1"><i class="fa-solid fa-compass-drafting mr-2"></i>Ship Design & Piping Layouts</h4>
-                                <p class="text-xs text-slate-400">General Arrangement drawings, 3D hull geometry, and 3D marine piping networks (Fuel, Bilge, Fresh Water, AC).</p>
-                            </div>
-                            <div class="p-4 rounded bg-navy-800/60 border border-cyan-brand/20">
-                                <h4 class="font-bold text-cyan-brand text-sm mb-1"><i class="fa-solid fa-chart-line mr-2"></i>Structural FEA & CFD Hydrodynamics</h4>
-                                <p class="text-xs text-slate-400">Structural integrity assessments with Abaqus & Bureau Veritas software alongside hydrodynamics in ANSYS Fluent.</p>
-                            </div>
-                            <div class="p-4 rounded bg-navy-800/60 border border-cyan-brand/20">
-                                <h4 class="font-bold text-cyan-brand text-sm mb-1"><i class="fa-solid fa-handshake mr-2"></i>Shipyard Resident Oversight</h4>
-                                <p class="text-xs text-slate-400">Direct technical supervision at Bangladesh Coast Guard Dockyard under BRTC-BUET engineering consultancy.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. PROFESSIONAL EXPERIENCE TIMELINE -->
-        <section id="experience" class="py-20 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">03. Career Experience</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Professional Track</p>
-                </div>
-
-                <div class="max-w-4xl mx-auto space-y-8 relative before:absolute before:inset-0 before:left-8 sm:before:left-1/2 before:w-0.5 before:bg-cyan-brand/20">
-                    
-                    <div class="relative flex flex-col sm:flex-row items-center group">
-                        <div class="flex items-center justify-start sm:justify-end w-full sm:w-1/2 sm:pr-8 pl-12 sm:pl-0 mb-2 sm:mb-0">
-                            <div class="glass-panel p-6 rounded-xl w-full text-left sm:text-right border border-cyan-brand/30 hover:border-cyan-brand transition-all">
-                                <span class="inline-block px-2.5 py-0.5 rounded bg-cyan-brand/10 text-cyan-brand font-mono text-xs font-bold mb-2">July 2026 – Present</span>
-                                <h3 class="text-lg font-bold text-white">Jr. Naval Architect</h3>
-                                <h4 class="text-sm font-semibold text-slate-300 mb-3">A.K. Sobhan Traders</h4>
-                                <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside sm:list-none">
-                                    <li>Package supplier procurement for 02 × 70-Ton Bollard Pull Tugboats for Payra Port Authority.</li>
-                                    <li>Interfacing with international OEMs, shipbuilder (Khulna Shipyard Ltd.), and classification society.</li>
-                                    <li>Handling technical documentation, equipment delivery schedules, and HAT/SAT commissioning.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-8 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-brand border-4 border-navy-950 shadow-lg shadow-cyan-brand z-10"></div>
-                        <div class="w-full sm:w-1/2 sm:pl-8"></div>
-                    </div>
-
-                    <div class="relative flex flex-col sm:flex-row items-center group">
-                        <div class="w-full sm:w-1/2 sm:pr-8"></div>
-                        <div class="absolute left-8 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-brand border-4 border-navy-950 shadow-lg shadow-cyan-brand z-10"></div>
-                        <div class="flex items-center justify-start w-full sm:w-1/2 sm:pl-8 pl-12 mb-2 sm:mb-0">
-                            <div class="glass-panel p-6 rounded-xl w-full text-left border border-cyan-brand/30 hover:border-cyan-brand transition-all">
-                                <span class="inline-block px-2.5 py-0.5 rounded bg-cyan-brand/10 text-cyan-brand font-mono text-xs font-bold mb-2">February 2026 – June 2026</span>
-                                <h3 class="text-lg font-bold text-white">Resident Engineer</h3>
-                                <h4 class="text-sm font-semibold text-slate-300 mb-3">BRTC–BUET Project, Bangladesh Coast Guard Dockyard</h4>
-                                <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
-                                    <li>Supervised vessel construction, structural alignment, and quality compliance on site.</li>
-                                    <li>Monitored welding inspection standards and verified compliance with approved CAD drawings.</li>
-                                    <li>Prepared daily technical progress logs for senior BUET project consultants.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative flex flex-col sm:flex-row items-center group">
-                        <div class="flex items-center justify-start sm:justify-end w-full sm:w-1/2 sm:pr-8 pl-12 sm:pl-0 mb-2 sm:mb-0">
-                            <div class="glass-panel p-6 rounded-xl w-full text-left sm:text-right border border-cyan-brand/30 hover:border-cyan-brand transition-all">
-                                <span class="inline-block px-2.5 py-0.5 rounded bg-cyan-brand/10 text-cyan-brand font-mono text-xs font-bold mb-2">November 2024 – May 2025</span>
-                                <h3 class="text-lg font-bold text-white">Teaching Assistant</h3>
-                                <h4 class="text-sm font-semibold text-slate-300 mb-3">Bangladesh University of Engineering and Technology (BUET)</h4>
-                                <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside sm:list-none">
-                                    <li>Assisted faculty in undergraduate Naval Architecture design labs and stability software sessions.</li>
-                                    <li>Guided students in CAD modeling, hydrostatics calculations, and intact stability criteria.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="absolute left-8 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-brand border-4 border-navy-950 shadow-lg shadow-cyan-brand z-10"></div>
-                        <div class="w-full sm:w-1/2 sm:pl-8"></div>
-                    </div>
-
-                    <div class="relative flex flex-col sm:flex-row items-center group">
-                        <div class="w-full sm:w-1/2 sm:pr-8"></div>
-                        <div class="absolute left-8 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-brand border-4 border-navy-950 shadow-lg shadow-cyan-brand z-10"></div>
-                        <div class="flex items-center justify-start w-full sm:w-1/2 sm:pl-8 pl-12 mb-2 sm:mb-0">
-                            <div class="glass-panel p-6 rounded-xl w-full text-left border border-cyan-brand/30 hover:border-cyan-brand transition-all">
-                                <span class="inline-block px-2.5 py-0.5 rounded bg-cyan-brand/10 text-cyan-brand font-mono text-xs font-bold mb-2">October 2022 – December 2022</span>
-                                <h3 class="text-lg font-bold text-white">Engineer Intern</h3>
-                                <h4 class="text-sm font-semibold text-slate-300 mb-3">Karnafuly Ship Builders Ltd.</h4>
-                                <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
-                                    <li>Gained hands-on experience in shipyard steel fabrication, lofting, and block assembly.</li>
-                                    <li>Observed shaft alignment procedures, dry dock operations, and launch sequences.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. ENGINEERING PROJECTS SHOWCASE -->
-        <section id="projects" class="py-20 bg-navy-900/60 border-y border-cyan-brand/10 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-10">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">04. Engineering Work</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Featured Projects</p>
-                </div>
-
-                <div class="flex flex-wrap justify-center gap-2 mb-12 font-mono text-xs">
-                    <button onclick="filterProjects('all')" class="project-filter-btn active px-4 py-2 rounded bg-cyan-brand text-navy-950 font-bold border border-cyan-brand transition-all">ALL PROJECTS</button>
-                    <button onclick="filterProjects('management')" class="project-filter-btn px-4 py-2 rounded bg-navy-800 text-slate-300 hover:text-cyan-brand border border-cyan-brand/20 transition-all">PROJECT MANAGEMENT</button>
-                    <button onclick="filterProjects('vessel')" class="project-filter-btn px-4 py-2 rounded bg-navy-800 text-slate-300 hover:text-cyan-brand border border-cyan-brand/20 transition-all">VESSEL DESIGN</button>
-                    <button onclick="filterProjects('piping')" class="project-filter-btn px-4 py-2 rounded bg-navy-800 text-slate-300 hover:text-cyan-brand border border-cyan-brand/20 transition-all">PIPING SYSTEMS</button>
-                    <button onclick="filterProjects('academic')" class="project-filter-btn px-4 py-2 rounded bg-navy-800 text-slate-300 hover:text-cyan-brand border border-cyan-brand/20 transition-all">ACADEMIC BSc</button>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <div class="project-card glass-panel rounded-xl overflow-hidden border border-cyan-brand/20 hud-corner flex flex-col justify-between" data-category="management">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-[11px] font-mono font-bold">PROFESSIONAL MANAGEMENT</span>
-                                <span class="text-xs font-mono text-slate-400">Payra Port Authority</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">02 × 70-Ton Bollard Pull Tugboats</h3>
-                            <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                                Package supplier procurement for A.K. Sobhan Traders with Khulna Shipyard Ltd. building the vessels.
-                            </p>
-
-                            <div class="h-48 rounded bg-navy-950 border border-cyan-brand/20 flex items-center justify-center relative overflow-hidden mb-4 group">
-                                <img id="p1-img" src="https://placehold.co/800x400/0B132B/00F5D4?text=70-Ton+Bollard+Pull+Tugboat+Procurement" alt="70 Ton Tugboat" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-navy-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                    <button onclick="openModal('p1')" class="px-3.5 py-2 rounded bg-cyan-brand text-navy-950 font-mono text-xs font-bold">VIEW SPECS</button>
-                                </div>
-                            </div>
-
-                            <ul class="text-xs text-slate-400 space-y-1 font-mono">
-                                <li>• International OEM machinery & propulsion procurement</li>
-                                <li>• Technical documentation & supplier coordination</li>
-                                <li>• Equipment delivery, installation, & HAT/SAT monitoring</li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-navy-900/80 border-t border-cyan-brand/10 flex justify-between items-center">
-                            <span class="text-xs font-mono text-cyan-brand">Khulna Shipyard / AKST</span>
-                            <button onclick="openModal('p1')" class="text-xs font-mono text-cyan-brand hover:underline font-bold">DETAILS <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-panel rounded-xl overflow-hidden border border-cyan-brand/20 hud-corner flex flex-col justify-between" data-category="vessel">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-[11px] font-mono font-bold">FREELANCE ENGINEERING</span>
-                                <span class="text-xs font-mono text-slate-400">Vessel Design</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">36 m Research Vessel Design</h3>
-                            <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                                Complete design package including General Arrangement, 3D geometry, stabilizing fins, structural assessment, and CFD.
-                            </p>
-
-                            <div class="h-48 rounded bg-navy-950 border border-cyan-brand/20 flex items-center justify-center relative overflow-hidden mb-4 group">
-                                <img id="p2-img" src="https://placehold.co/800x400/0B132B/00F5D4?text=36m+Research+Vessel+3D+Model+%26+GA" alt="36m Research Vessel" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-navy-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                    <button onclick="openModal('p2')" class="px-3.5 py-2 rounded bg-cyan-brand text-navy-950 font-mono text-xs font-bold">VIEW SPECS</button>
-                                </div>
-                            </div>
-
-                            <ul class="text-xs text-slate-400 space-y-1 font-mono">
-                                <li>• General Arrangement & midship structural layout</li>
-                                <li>• Bureau Veritas (BV) structural integrity assessment</li>
-                                <li>• CFD hydrodynamic analysis & fin optimization</li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-navy-900/80 border-t border-cyan-brand/10 flex justify-between items-center">
-                            <span class="text-xs font-mono text-cyan-brand">Rhino 3D / BV / ANSYS</span>
-                            <button onclick="openModal('p2')" class="text-xs font-mono text-cyan-brand hover:underline font-bold">DETAILS <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-panel rounded-xl overflow-hidden border border-cyan-brand/20 hud-corner flex flex-col justify-between" data-category="piping">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-[11px] font-mono font-bold">FREELANCE ENGINEERING</span>
-                                <span class="text-xs font-mono text-slate-400">Piping Systems</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">48-ft Catamaran Piping System Design</h3>
-                            <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                                3D routing and layout of 5 distinct marine piping systems inside a twin-hull catamaran structure.
-                            </p>
-
-                            <div class="h-48 rounded bg-navy-950 border border-cyan-brand/20 flex items-center justify-center relative overflow-hidden mb-4 group">
-                                <img id="p3-img" src="https://placehold.co/800x400/0B132B/00F5D4?text=48-ft+Catamaran+3D+Piping+Layout" alt="48ft Catamaran Piping" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-navy-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                    <button onclick="openModal('p3')" class="px-3.5 py-2 rounded bg-cyan-brand text-navy-950 font-mono text-xs font-bold">VIEW SPECS</button>
-                                </div>
-                            </div>
-
-                            <ul class="text-xs text-slate-400 space-y-1 font-mono">
-                                <li>• Fuel, Freshwater, AC, Bilge, & Heating routing</li>
-                                <li>• Equipment placement & engine room 3D integration</li>
-                                <li>• Isometric schematics & CAD drawings</li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-navy-900/80 border-t border-cyan-brand/10 flex justify-between items-center">
-                            <span class="text-xs font-mono text-cyan-brand">Rhino 3D / AutoCAD</span>
-                            <button onclick="openModal('p3')" class="text-xs font-mono text-cyan-brand hover:underline font-bold">DETAILS <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="project-card glass-panel rounded-xl overflow-hidden border border-cyan-brand/20 hud-corner flex flex-col justify-between" data-category="academic">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-[11px] font-mono font-bold">ACADEMIC BSc PROJECT</span>
-                                <span class="text-xs font-mono text-slate-400">BMU Thesis</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">1800 DWT Inland Cargo Vessel</h3>
-                            <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                                Complete conceptual and preliminary design of an 1800 Ton Deadweight (DWT) inland bulk cargo vessel for the Dhaka–Chattogram waterway route.
-                            </p>
-
-                            <div class="h-48 rounded bg-navy-950 border border-cyan-brand/20 flex items-center justify-center relative overflow-hidden mb-4 group">
-                                <img id="p4-img" src="WhatsApp Image 2026-11-01 at 12.19.38 AM.jpeg" alt="1800 DWT Cargo Vessel" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-navy-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                    <button onclick="openModal('p4')" class="px-3.5 py-2 rounded bg-cyan-brand text-navy-950 font-mono text-xs font-bold">VIEW SPECS</button>
-                                </div>
-                            </div>
-
-                            <ul class="text-xs text-slate-400 space-y-1 font-mono">
-                                <li>• Lines Plan, Body Plan & Offsets Table development</li>
-                                <li>• Shell Expansion: Keel (12mm), Bilge (11mm), Bottom & Shell (10mm)</li>
-                                <li>• Hydrostatics, weight distribution & intact stability verification</li>
-                            </ul>
-                        </div>
-                        <div class="p-4 bg-navy-900/80 border-t border-cyan-brand/10 flex justify-between items-center">
-                            <span class="text-xs font-mono text-cyan-brand">Maxsurf / AutoCAD</span>
-                            <button onclick="openModal('p4')" class="text-xs font-mono text-cyan-brand hover:underline font-bold">DETAILS <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. ENGINEERING SERVICES (8 CATEGORIES) -->
-        <section id="services" class="py-20 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">05. Capabilities</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Engineering Services</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">01</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Ship Design & Naval Architecture</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Conceptual, preliminary, and detail vessel design adhering to class rules and international standards.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">02</div>
-                        <h3 class="text-lg font-bold text-white mb-2">General Arrangement Drawings</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Drafting detailed compartmentation, space allocation, superstructure, and deck machinery layouts.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">03</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Hull Modelling & 3D Ship Modelling</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Parametric hull surface generation, body plan creation, and full 3D vessel renders in Rhino 3D & Maxsurf.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">04</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Marine Piping System Design</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">3D layout routing and 2D schematics for bilge, ballast, fuel oil, freshwater, AC, and heating systems.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">05</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Structural Analysis (Abaqus/BV)</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Finite Element Analysis (FEA) for global hull girder strength, local frame stress, and structural integrity.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">06</div>
-                        <h3 class="text-lg font-bold text-white mb-2">CFD Analysis (ANSYS Fluent)</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Resistance prediction, flow visualization around hull forms, wave pattern evaluation, and fin optimization.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">07</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Ship Stability & Weight Calculations</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Intact and damage stability verification, hydrostatic properties, deadweight scale, and loading conditions.</p>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-xl glass-panel-hover border border-cyan-brand/20">
-                        <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand text-base mb-4 font-mono font-bold">08</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Technical Specs & Coordination</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Procurement packages, OEM technical query resolution, shipyard monitoring, and HAT/SAT coordination.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. TECHNICAL SKILLS -->
-        <section id="skills" class="py-20 bg-navy-900/60 border-y border-cyan-brand/10 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">06. Toolkit</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Technical Skills & Software</p>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 font-mono text-xs">
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-compass-drafting text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">AutoCAD</span>
-                        <span class="text-[10px] text-slate-400">2D Drafting</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-cube text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">Rhino 3D</span>
-                        <span class="text-[10px] text-slate-400">3D Vessel & Piping</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-ship text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">Maxsurf</span>
-                        <span class="text-[10px] text-slate-400">Stability & Hydrostatics</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-draw-polygon text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">Abaqus</span>
-                        <span class="text-[10px] text-slate-400">FEA Structural Stress</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-wind text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">ANSYS Fluent</span>
-                        <span class="text-[10px] text-slate-400">CFD Flow Simulations</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-gears text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">SolidWorks</span>
-                        <span class="text-[10px] text-slate-400">Mechanical Modeling</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-brands fa-python text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">Python</span>
-                        <span class="text-[10px] text-slate-400">Propeller Math & ML</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-calendar-check text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">MS Project</span>
-                        <span class="text-[10px] text-slate-400">Project Planning</span>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 text-center flex flex-col items-center gap-2 col-span-2 sm:col-span-1">
-                        <i class="fa-solid fa-file-lines text-2xl text-cyan-brand mb-1"></i>
-                        <span class="font-bold text-white">MS Office</span>
-                        <span class="text-[10px] text-slate-400">Specs & Procurement</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. RESEARCH & PUBLICATIONS -->
-        <section id="research" class="py-20 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">07. Research</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Publications & Academic Research</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <div class="lg:col-span-6 glass-panel p-8 rounded-xl border border-cyan-brand/20 flex flex-col justify-between">
-                        <div>
-                            <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-xs font-mono font-bold mb-4 inline-block">RESEARCH ASSISTANT</span>
-                            <h3 class="text-xl font-bold text-white mb-3">Shipbreaking Safety & Risk Analysis</h3>
-                            <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                                Research conducted at Bangladesh Research Society focusing on safety risk assessment, accident analysis, and machine learning applications in ship recycling operations.
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-cyan-brand/10 font-mono text-xs text-slate-400">
-                            <span>Bangladesh Research Society</span>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-6 glass-panel p-8 rounded-xl border border-cyan-brand/20 hud-corner flex flex-col justify-between">
-                        <div>
-                            <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-xs font-mono font-bold mb-4 inline-block">PEER-REVIEWED PUBLICATION</span>
-                            <h3 class="text-xl font-bold text-white mb-2">"Development of a Python Code for Propeller Design Calculation and Additive Manufacturing Procedure"</h3>
-                            <p class="text-cyan-brand text-xs font-mono mb-4">Bangladesh Maritime Journal, Vol 9(1), December 2024</p>
-                            <p class="text-slate-300 text-xs leading-relaxed">
-                                Formulated automated propeller geometry generation script using Python, converting hydrodynamic parameters directly into 3D models optimized for additive manufacturing.
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-cyan-brand/10 font-mono text-xs text-slate-400 flex justify-between">
-                            <span>AUTHOR: WASI UDDIN MAHMUD</span>
-                            <span class="text-cyan-brand">DECEMBER 2024</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. EDUCATION -->
-        <section id="education" class="py-20 bg-navy-900/60 border-y border-cyan-brand/10 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">08. Academics</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Education</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="glass-panel p-8 rounded-xl border border-cyan-brand/20 hud-corner">
-                        <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-xs font-mono font-bold mb-3 inline-block">2024 – PRESENT</span>
-                        <h3 class="text-xl font-bold text-white mb-1">MSc in Naval Architecture & Marine Engineering</h3>
-                        <p class="text-sm font-semibold text-slate-300 mb-3">Bangladesh University of Engineering and Technology (BUET)</p>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Advanced coursework in marine hydrodynamics, CFD simulations, structural stability, and propulsion systems.
-                        </p>
-                    </div>
-
-                    <div class="glass-panel p-8 rounded-xl border border-cyan-brand/20 hud-corner">
-                        <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-xs font-mono font-bold mb-3 inline-block">2019 – 2024</span>
-                        <h3 class="text-xl font-bold text-white mb-1">BSc in Naval Architecture & Offshore Engineering</h3>
-                        <p class="text-sm font-semibold text-slate-300 mb-3">Bangladesh Maritime University (BMU)</p>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Focused on ship design principles, resistance, propulsion, marine structures, and inland waterways engineering.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9. CONTACT -->
-        <section id="contact" class="py-20 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-brand mb-2">09. Connect</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Contact & Collaboration</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                    <div class="lg:col-span-5 space-y-4">
-                        <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 flex items-center gap-4">
-                            <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-mono text-slate-400 block">EMAIL</span>
-                                <a href="mailto:wasi.mahmud90@gmail.com" class="text-sm font-bold text-white hover:text-cyan-brand">wasi.mahmud90@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 flex items-center gap-4">
-                            <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-mono text-slate-400 block">PHONE</span>
-                                <a href="tel:+8801602512264" class="text-sm font-bold text-white hover:text-cyan-brand">+880-1602512264</a>
-                            </div>
-                        </div>
-
-                        <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 flex items-center gap-4">
-                            <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-mono text-slate-400 block">LOCATION</span>
-                                <span class="text-sm font-bold text-white">Dhaka, Bangladesh</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-panel p-5 rounded-xl border border-cyan-brand/20 flex items-center gap-4">
-                            <div class="w-10 h-10 rounded bg-navy-800 border border-cyan-brand/30 flex items-center justify-center text-cyan-brand">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-mono text-slate-400 block">LINKEDIN</span>
-                                <a href="https://linkedin.com/in/wasi-uddin-mahmud" target="_blank" class="text-sm font-bold text-white hover:text-cyan-brand">linkedin.com/in/wasi-uddin-mahmud</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7 glass-panel p-8 rounded-xl border border-cyan-brand/20 hud-corner">
-                        <h3 class="text-xl font-bold text-white mb-6 font-mono">Send Project Inquiry</h3>
-                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-mono text-slate-400 mb-1">YOUR NAME *</label>
-                                    <input type="text" required class="w-full bg-navy-950 border border-cyan-brand/20 rounded p-3 text-sm text-white focus:border-cyan-brand focus:outline-none" placeholder="Name">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-mono text-slate-400 mb-1">EMAIL ADDRESS *</label>
-                                    <input type="email" required class="w-full bg-navy-950 border border-cyan-brand/20 rounded p-3 text-sm text-white focus:border-cyan-brand focus:outline-none" placeholder="Email">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-mono text-slate-400 mb-1">SUBJECT</label>
-                                <input type="text" class="w-full bg-navy-950 border border-cyan-brand/20 rounded p-3 text-sm text-white focus:border-cyan-brand focus:outline-none" placeholder="Vessel Design / Technical Inquiry">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-mono text-slate-400 mb-1">MESSAGE *</label>
-                                <textarea required rows="4" class="w-full bg-navy-950 border border-cyan-brand/20 rounded p-3 text-sm text-white focus:border-cyan-brand focus:outline-none" placeholder="Write your message..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full py-3.5 rounded bg-cyan-brand text-navy-950 font-bold text-sm hover:bg-cyan-glow transition-all flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-paper-plane"></i> TRANSMIT MESSAGE
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-navy-900 border-t border-cyan-brand/20 py-8 font-mono text-xs text-slate-400">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div>© 2026 WASI UDDIN MAHMUD. ALL RIGHTS RESERVED.</div>
-            <a href="#home" class="text-cyan-brand hover:underline">TOP ↑</a>
-        </div>
-    </footer>
-
-    <!-- MODAL POPUP -->
-    <div id="project-modal" class="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-xl border border-cyan-brand/40 hud-corner p-6 relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-cyan-brand text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div id="modal-content"></div>
-        </div>
+      </div>
+
+      <div class="hero-profile-frame">
+        <img src="WASI UDDIN MAHMUD.jpeg" alt="Wasi Uddin Mahmud - Executive Headshot" class="hero-img">
+      </div>
     </div>
+  </section>
 
-    <!-- MEDIA MANAGER MODAL -->
-    <div id="media-modal" class="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-lg w-full rounded-xl border border-cyan-brand/40 hud-corner p-6 relative">
-            <button onclick="toggleMediaManager()" class="absolute top-4 right-4 text-slate-400 hover:text-cyan-brand text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-lg font-bold text-white mb-4 font-mono">Media Link Swapper</h3>
-            <div class="space-y-4 font-mono text-xs">
-                <div>
-                    <label class="block text-slate-300 mb-1">Target Element</label>
-                    <select id="media-target" class="w-full bg-navy-950 border border-cyan-brand/20 rounded p-2.5 text-white">
-                        <option value="hero-img-preview">Hero / About Profile Picture</option>
-                        <option value="p1-img">Project 1: 70-Ton Tugboats</option>
-                        <option value="p2-img">Project 2: 36m Research Vessel</option>
-                        <option value="p3-img">Project 3: Catamaran Piping System</option>
-                        <option value="p4-img">Project 4: 1800 DWT Inland Cargo Vessel</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-slate-300 mb-1">Image Link or Local Path</label>
-                    <input type="text" id="media-url" class="w-full bg-navy-950 border border-cyan-brand/20 rounded p-2.5 text-white" placeholder="https://... or images/photo.jpg">
-                </div>
-                <button onclick="applyMediaUpdate()" class="w-full py-2.5 rounded bg-cyan-brand text-navy-950 font-bold">UPDATE IMAGE</button>
-            </div>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <span class="section-tag">02. // PROFILE SUMMARY</span>
+      <h2 class="section-title">About Me</h2>
+
+      <div class="about-grid">
+        <div class="about-img-frame">
+          <img src="WASI_1.jpeg" alt="Wasi Uddin Mahmud - On Site Engineering" class="about-img">
         </div>
+
+        <div>
+          <p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 1rem;">
+            I am a dedicated Naval Architect and Marine Engineer with proven expertise in total package procurement, technical drawing review, shipyard management, and QA/QC infrastructure supervision.
+          </p>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+            My experience bridges theoretical hydrodynamics and hands-on shipyard execution. From managing multi-million dollar package supplies for 70-Ton Bollard Pull Tugboats at Khulna Shipyard Ltd. to conducting site inspections for Bangladesh Coast Guard dockyard projects under BRTC-BUET, I deliver high-precision engineering solutions.
+          </p>
+
+          <div class="about-details">
+            <div class="detail-item">
+              <div class="detail-label">LOCATION</div>
+              <div class="detail-value">Azimpur, Dhaka, Bangladesh</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">EMAIL</div>
+              <div class="detail-value">wasi.mahmud90@gmail.com</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">PHONE</div>
+              <div class="detail-value">+880-1602512264</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">SPECIALIZATION</div>
+              <div class="detail-value">Ship Design, Procurement & Piping</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <script>
-        const mobileBtn = document.getElementById('mobile-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <span class="section-tag">03. // CAREER TIMELINE</span>
+      <h2 class="section-title">Work Experience</h2>
 
-        function filterProjects(category) {
-            const cards = document.querySelectorAll('.project-card');
-            const btns = document.querySelectorAll('.project-filter-btn');
+      <div class="timeline">
+        <!-- Role 1 -->
+        <div class="timeline-item">
+          <div class="timeline-date">07/2026 - Present</div>
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Jr. Naval Architect</h3>
+            <div class="timeline-company">AK Sobhan Traders | Banani, Dhaka</div>
+            <ul class="timeline-bullets">
+              <li>Manage package supply procurement for 02 × 70-Ton Bollard Pull Tugboats for Payra Port Authority built at Khulna Shipyard Ltd.</li>
+              <li>Coordinate with international OEMs, shipyard managers, and class surveyors for machinery integration.</li>
+              <li>Oversee technical document compliance, equipment pre-commissioning, and Harbour Acceptance Tests (HAT).</li>
+            </ul>
+          </div>
+        </div>
 
-            btns.forEach(btn => {
-                btn.classList.remove('bg-cyan-brand', 'text-navy-950', 'font-bold');
-                btn.classList.add('bg-navy-800', 'text-slate-300');
-            });
+        <!-- Role 2 -->
+        <div class="timeline-item">
+          <div class="timeline-date">02/2026 - 06/2026</div>
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Resident Engineer</h3>
+            <div class="timeline-company">BRTC-BUET Project | Bangladesh Coast Guard Dockyard</div>
+            <ul class="timeline-bullets">
+              <li>Supervised structural construction of dockyard slipway infrastructure under BUET consultancy.</li>
+              <li>Performed comprehensive QA/QC verification of structural foundation alignments and concrete pours.</li>
+              <li>Reviewed engineering specifications and verified structural drawing compliance on-site.</li>
+            </ul>
+          </div>
+        </div>
 
-            event.target.classList.remove('bg-navy-800', 'text-slate-300');
-            event.target.classList.add('bg-cyan-brand', 'text-navy-950', 'font-bold');
+        <!-- Role 3 -->
+        <div class="timeline-item">
+          <div class="timeline-date">11/2024 - 05/2025</div>
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Teaching Assistant</h3>
+            <div class="timeline-company">BUET | Department of NAME</div>
+            <ul class="timeline-bullets">
+              <li>Assisted faculty in structural analysis laboratory sessions and finite element simulations.</li>
+              <li>Guided undergraduate students in naval architecture software applications and technical evaluations.</li>
+            </ul>
+          </div>
+        </div>
 
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+        <!-- Role 4 -->
+        <div class="timeline-item">
+          <div class="timeline-date">10/2022 - 12/2022</div>
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Engineer Intern</h3>
+            <div class="timeline-company">Karnafuly Ship Builders Ltd (KSBL)</div>
+            <ul class="timeline-bullets">
+              <li>Monitored hull fabrication, plate cutting, welding standards, and machinery alignment in fitting-out berths.</li>
+              <li>Assisted production team in interpreting 2D structural layouts and material supply schedules.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        const projectData = {
-            p1: {
-                title: "02 × 70-Ton Bollard Pull Tugboats – Payra Port Authority",
-                category: "Professional Project Management & Procurement",
-                description: "Package supplier management for A.K. Sobhan Traders with Khulna Shipyard Ltd. building the vessels.",
-                images: [
-                    "WhatsApp Image 2026-10-31 at 11.53.08 PM (1).jpeg",
-                    "WhatsApp Image 2026-10-31 at 11.53.10 PM.jpeg",
-                    "WhatsApp Image 2026-10-31 at 11.53.09 PM.jpeg",
-                    "WhatsApp Image 2026-10-31 at 11.53.06 PM (1).jpeg"
-                ],
-                specs: [
-                    "Procurement of main engines, propulsion units, generators, and deck machinery.",
-                    "Active technical query resolution between OEMs, shipyard, and client.",
-                    "Equipment delivery schedule tracking and quality control verification.",
-                    "Coordination of OEM service engineers for installation, commissioning, and Harbour Acceptance Tests (HAT)."
-                ]
-            },
-            p2: {
-                title: "36 m Research Vessel Design",
-                category: "Freelance Engineering Project",
-                description: "Complete design package engineered to classification society standards.",
-                images: [
-                    "WhatsApp Image 2026-11-01 at 12.01.37 AM.jpeg",
-                    "WhatsApp Image 2026-11-01 at 12.01.38 AM.jpeg",
-                    "WhatsApp Image 2026-11-01 at 12.01.39 AM.jpeg"
-                ],
-                specs: [
-                    "General Arrangement (GA) layout drawings.",
-                    "Full 3D hull geometry modeling in Rhino 3D.",
-                    "Stabilizing fin arrangement and positioning.",
-                    "Midship section design and structural integrity analysis via Bureau Veritas software.",
-                    "CFD hydrodynamic resistance and flow pattern evaluation."
-                ]
-            },
-            p3: {
-                title: "48-ft Catamaran Piping System Design",
-                category: "Freelance Engineering Project",
-                description: "Complete 3D routing and schematic design for twin-hull catamaran.",
-                images: [
-                    "WhatsApp Image 2026-11-01 at 12.16.38 AM.jpeg",
-                    "WhatsApp Image 2026-11-01 at 12.16.37 AM (1).jpeg",
-                    "WhatsApp Image 2026-11-01 at 12.16.37 AM.jpeg"
-                ],
-                specs: [
-                    "3D piping layouts inside tight hull spaces using Rhino 3D.",
-                    "Equipment placement & engine room 3D integration.",
-                    "Four-Zone Bilge Partitioning (BS1 to BS4) with 2000 GPH electric pumps and 300x100x4 mm ALU plate mounts.",
-                    "Fuel, Freshwater, AC, Bilge, & Heating routing with isometric schematics (BAS-Series)."
-                ]
-            },
-            p4: {
-                title: "Design of a 1800 Ton DWT Inland Cargo Vessel",
-                category: "Academic BSc Thesis (Bangladesh Maritime University)",
-                description: "Conceptual and preliminary design of an 1800 DWT inland cargo vessel engineered for riverine operations along the vital Dhaka–Chattogram waterway route.",
-                images: [
-                    "WhatsApp Image 2026-11-01 at 12.19.38 AM.jpeg",
-                    "WhatsApp Image 2026-11-01 at 12.19.37 AM.jpeg",
-                    "WhatsApp Image 2026-11-01 at 12.19.32 AM.jpeg"
-                ],
-                specs: [
-                    "Hull Form & Lines Plan: Formulated comprehensive Lines Plan, Body Plan, and Waterline Offsets Table (WL-1 to WL-14) with station spacing of 6826 mm.",
-                    "Shell Expansion & Structural Scantlings: Modeled complete shell expansion plating specifying Keel Plate (12 mm), Bilge Plate (11 mm), Bottom Plate (10 mm), and Side Shell Plate (10 mm).",
-                    "General Arrangement (GA): Designed Profile, Plan view, Bridge Deck, Navigation Deck, Poop Deck, and Cargo Hold layouts for maximum deadweight capacity.",
-                    "Hydrostatics & Hydrodynamics: Conducted displacement calculations, weight estimation, trim & intact stability analysis, and resistance prediction conforming to inland maritime safety codes."
-                ]
-            }
-        };
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <span class="section-tag">04. // ENGINEERING PORTFOLIO</span>
+      <h2 class="section-title">Featured Projects</h2>
 
-        function openModal(id) {
-            const data = projectData[id];
-            const modal = document.getElementById('project-modal');
-            const content = document.getElementById('modal-content');
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <span class="project-badge">PACKAGE PROCUREMENT</span>
+            <img src="Project_1_6.jpeg" alt="70 Ton Tugboat Hull" class="project-img">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">02 × 70-Ton Bollard Pull Tugboats (PPA)</h3>
+            <p class="project-desc">Package procurement, OEM technical coordination, deck machinery, bow thrusters, and HVAC layout review for Payra Port Authority tugboats built at Khulna Shipyard Ltd.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Procurement</span>
+              <span class="tech-tag">AutoCAD</span>
+              <span class="tech-tag">Deck Machinery</span>
+              <span class="tech-tag">HVAC/Ducting</span>
+              <span class="tech-tag">HAT/SAT</span>
+            </div>
+            <button onclick="openModal('modal-1')" class="btn btn-outline" style="width: 100%; justify-content: center;"><i class="fas fa-search-plus"></i> VIEW TECHNICAL SPECS & GALLERY</button>
+          </div>
+        </div>
 
-            const galleryHtml = data.images && data.images.length ? `
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                    ${data.images.map(img => `
-                        <div class="h-36 rounded bg-navy-950 border border-cyan-brand/20 overflow-hidden">
-                            <img src="${img}" alt="${data.title}" class="w-full h-full object-cover hover:scale-105 transition-transform">
-                        </div>
-                    `).join('')}
-                </div>
-            ` : '';
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <span class="project-badge">DESIGN & CFD</span>
+            <img src="Project_2_1.jpeg" alt="36m Research Vessel GA" class="project-img">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">36m Research Vessel Design & Analysis</h3>
+            <p class="project-desc">Complete GA drafting, 3D Rhino hull modeling with bulbous bow, Bureau Veritas structural frame analysis, and free-surface ANSYS Fluent CFD flow simulations.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Rhino 3D</span>
+              <span class="tech-tag">AutoCAD</span>
+              <span class="tech-tag">Bureau Veritas</span>
+              <span class="tech-tag">ANSYS Fluent</span>
+            </div>
+            <button onclick="openModal('modal-2')" class="btn btn-outline" style="width: 100%; justify-content: center;"><i class="fas fa-search-plus"></i> VIEW TECHNICAL SPECS & GALLERY</button>
+          </div>
+        </div>
 
-            content.innerHTML = `
-                <span class="px-2.5 py-1 rounded bg-cyan-brand/10 text-cyan-brand text-xs font-mono font-bold mb-2 inline-block">${data.category}</span>
-                <h2 class="text-2xl font-bold text-white mb-3">${data.title}</h2>
-                <p class="text-slate-300 text-xs mb-4 leading-relaxed">${data.description}</p>
-                ${galleryHtml}
-                <h4 class="font-bold text-cyan-brand text-xs font-mono mb-2 uppercase">Technical Highlights & Deliverables:</h4>
-                <ul class="text-xs text-slate-300 space-y-2 font-mono list-disc list-inside">
-                    ${data.specs.map(spec => `<li>${spec}</li>`).join('')}
-                </ul>
-            `;
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <span class="project-badge">PIPING SYSTEMS</span>
+            <img src="Project_3_2.jpeg" alt="48ft Catamaran Piping 3D" class="project-img">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">48-ft Catamaran Piping System Design</h3>
+            <p class="project-desc">Spatial 3D routing for fuel, fresh water, bilge, and HVAC loops inside twin catamaran hulls. Designed 4-zone bilge system (BS1-BS4) with 2000 GPH pumps and isometric spool tags.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Rhino 3D</span>
+              <span class="tech-tag">AutoCAD 2D</span>
+              <span class="tech-tag">Bilge Layout</span>
+              <span class="tech-tag">Spool Schematics</span>
+            </div>
+            <button onclick="openModal('modal-3')" class="btn btn-outline" style="width: 100%; justify-content: center;"><i class="fas fa-search-plus"></i> VIEW TECHNICAL SPECS & GALLERY</button>
+          </div>
+        </div>
 
-            modal.classList.remove('hidden');
-        }
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <span class="project-badge">INLAND CARGO</span>
+            <img src="01_Profile_and_Half_Breadth_Plan.jpg" alt="1800 DWT Inland Cargo Vessel" class="project-img">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">1800 DWT Inland Cargo Vessel Design</h3>
+            <p class="project-desc">Complete lines plan development, shell expansion scantling calculations (12mm Keel, 10mm Shell), hydrostatic offset tables, and GA drafting for Dhaka-Chattogram route.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Lines Plan</span>
+              <span class="tech-tag">Shell Expansion</span>
+              <span class="tech-tag">Hydrostatics</span>
+              <span class="tech-tag">Maxsurf</span>
+            </div>
+            <button onclick="openModal('modal-4')" class="btn btn-outline" style="width: 100%; justify-content: center;"><i class="fas fa-search-plus"></i> VIEW TECHNICAL SPECS & GALLERY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function closeModal() {
-            document.getElementById('project-modal').classList.add('hidden');
-        }
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <span class="section-tag">05. // CORE COMPETENCIES</span>
+      <h2 class="section-title">Engineering Services</h2>
 
-        function toggleMediaManager() {
-            document.getElementById('media-modal').classList.toggle('hidden');
-        }
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-drafting-compass service-icon"></i>
+          <h3 class="service-title">Ship Design & GA</h3>
+          <p class="service-desc">Conceptual & preliminary vessel design, GA drafting, lines plan optimization, and space layout planning.</p>
+        </div>
 
-        function applyMediaUpdate() {
-            const targetId = document.getElementById('media-target').value;
-            const url = document.getElementById('media-url').value;
+        <div class="service-card">
+          <i class="fas fa-network-wired service-icon"></i>
+          <h3 class="service-title">3D Marine Piping</h3>
+          <p class="service-desc">Complete 3D routing for fuel, fresh water, HVAC, bilge/ballast, and 2D isometric spool drafting.</p>
+        </div>
 
-            if (url) {
-                const targetImg = document.getElementById(targetId);
-                if (targetImg) targetImg.src = url;
-                if (targetId === 'hero-img-preview') {
-                    const aboutImg = document.getElementById('about-portrait-img');
-                    if (aboutImg) aboutImg.src = url;
-                }
-                toggleMediaManager();
-            }
-        }
+        <div class="service-card">
+          <i class="fas fa-boxes-packing service-icon"></i>
+          <h3 class="service-title">Package Procurement</h3>
+          <p class="service-desc">Managing machinery supply packages, OEM coordination, quotation review, and site delivery follow-up.</p>
+        </div>
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            alert('Message transmitted successfully.');
-            document.getElementById('contact-form').reset();
-        }
-    </script>
+        <div class="service-card">
+          <i class="fas fa-shield-halved service-icon"></i>
+          <h3 class="service-title">Structural Analysis</h3>
+          <p class="service-desc">Class rule compliance checking (Bureau Veritas), midship section design, and FEA strength evaluation.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-water service-icon"></i>
+          <h3 class="service-title">CFD & Hydrodynamics</h3>
+          <p class="service-desc">ANSYS Fluent free-surface wave resistance analysis, hull form optimization, and motion evaluation.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-clipboard-check service-icon"></i>
+          <h3 class="service-title">QA/QC Supervision</h3>
+          <p class="service-desc">On-site dockyard & slipway construction supervision, alignment checks, and structural inspections.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-cube service-icon"></i>
+          <h3 class="service-title">Additive Manufacturing</h3>
+          <p class="service-desc">3D propeller design optimization using custom Python algorithms and 3D printing workflows.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-code service-icon"></i>
+          <h3 class="service-title">Python ML Modeling</h3>
+          <p class="service-desc">Engineering data analytics, predictive modeling for maritime safety, and automated design scripts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <span class="section-tag">06. // TECHNICAL TOOLKIT</span>
+      <h2 class="section-title">Software & Technical Skills</h2>
+
+      <div class="skills-wrapper">
+        <div>
+          <h3 class="skill-group-title">// CAD & SHIP DESIGN SOFTWARE</h3>
+          <div class="skill-tags">
+            <span class="skill-pill"><i class="fas fa-check"></i> Rhinoceros 3D (Rhino)</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> AutoCAD 2D/3D</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Maxsurf Enterprise</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Bureau Veritas (BV) Software</span>
+          </div>
+
+          <h3 class="skill-group-title" style="margin-top: 2rem;">// NUMERICAL & FEA/CFD TOOLS</h3>
+          <div class="skill-tags">
+            <span class="skill-pill"><i class="fas fa-check"></i> ANSYS Fluent (CFD)</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Abaqus FEA</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Python (Scientific & ML)</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> MS Excel (Data Modeling)</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="skill-group-title">// PROJECT & MANAGEMENT SKILLS</h3>
+          <div class="skill-tags">
+            <span class="skill-pill"><i class="fas fa-check"></i> Package Procurement Management</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Shipyard OEM Coordination</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> QA/QC Infrastructure Supervision</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Technical Specification Drafting</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Harbour Acceptance Testing (HAT)</span>
+            <span class="skill-pill"><i class="fas fa-check"></i> Class Rule Verification</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research">
+    <div class="container">
+      <span class="section-tag">07. // SCIENTIFIC PUBLICATIONS</span>
+      <h2 class="section-title">Research & Publications</h2>
+
+      <div class="pub-card">
+        <div class="pub-journal">BANGLADESH MARITIME JOURNAL | VOL. 9, NO. 1 (2024)</div>
+        <h3 class="pub-title">Development of a Python Code for Propeller Design Calculation and Additive Manufacturing Procedure</h3>
+        <p class="pub-authors">Authors: <strong>Mahmud, W. U.</strong>, & Dihan, S. S.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+          Developed custom algorithmic code in Python for automated propeller geometry generation, hydrodynamic parameter evaluation, and rapid 3D printing prototyping protocols.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <span class="section-tag">08. // ACADEMIC BACKGROUND</span>
+      <h2 class="section-title">Education</h2>
+
+      <div class="edu-grid">
+        <div class="edu-card">
+          <h3 class="edu-degree">MSc in Naval Architecture & Marine Engineering</h3>
+          <div class="edu-school">Bangladesh University of Engineering and Technology (BUET)</div>
+          <div class="edu-grade">CGPA: 3.25 | 11/2024 - Present</div>
+        </div>
+
+        <div class="edu-card">
+          <h3 class="edu-degree">BSc in Naval Architecture & Offshore Engineering</h3>
+          <div class="edu-school">Bangabandhu Sheikh Mujibur Rahman Maritime University (BSMRMU)</div>
+          <div class="edu-grade">CGPA: 3.56 | 02/2019 - 03/2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-tag">09. // GET IN TOUCH</span>
+      <h2 class="section-title">Contact & Professional Network</h2>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-text">
+              <label>EMAIL ADDRESS</label>
+              <a href="mailto:wasi.mahmud90@gmail.com">wasi.mahmud90@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-text">
+              <label>PHONE / WHATSAPP</label>
+              <a href="tel:+8801602512264">+880-1602512264</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+            <div class="contact-text">
+              <label>LOCATION</label>
+              <span>Azimpur, Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div class="contact-text">
+              <label>LINKEDIN PROFILE</label>
+              <a href="https://linkedin.com/in/wasi-uddin-mahmud" target="_blank">linkedin.com/in/wasi-uddin-mahmud</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-blue); padding: 2rem;">
+          <h3 style="font-family: var(--font-heading); color: #fff; margin-bottom: 1rem;">Direct Project Inquiry</h3>
+          <form onsubmit="event.preventDefault(); alert('Message feature ready! You can connect your backend service.');">
+            <div style="margin-bottom: 1rem;">
+              <input type="text" placeholder="Your Name" style="width: 100%; padding: 0.75rem; background: var(--navy-deep); border: 1px solid var(--border-blue); color: #fff; font-family: var(--font-body);" required>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <input type="email" placeholder="Your Email" style="width: 100%; padding: 0.75rem; background: var(--navy-deep); border: 1px solid var(--border-blue); color: #fff; font-family: var(--font-body);" required>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <textarea rows="4" placeholder="Project Details or Scope" style="width: 100%; padding: 0.75rem; background: var(--navy-deep); border: 1px solid var(--border-blue); color: #fff; font-family: var(--font-body);" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-solid" style="width: 100%; justify-content: center;">SEND INQUIRY</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      &copy; 2026 WASI UDDIN MAHMUD. ALL RIGHTS RESERVED. DESIGNED FOR NAVAL ARCHITECTURE & SHIPBUILDING EXCELLENCE.
+    </div>
+  </footer>
+
+  <!-- Modal Drawers -->
+  <!-- Modal 1 -->
+  <div id="modal-1" class="modal">
+    <div class="modal-container">
+      <button onclick="closeModal('modal-1')" class="modal-close">&times;</button>
+      <span class="section-tag">// PROJECT 01 SPECIFICATIONS</span>
+      <h2 style="font-family: var(--font-heading); color: #fff; margin-bottom: 1rem;">02 × 70-Ton Bollard Pull Tugboats (PPA)</h2>
+      
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        Package procurement management and site engineering coordination for Payra Port Authority tugboats built at Khulna Shipyard Ltd.
+      </p>
+
+      <div class="modal-gallery">
+        <div class="modal-img-card"><img src="Project_1_6.jpeg" alt="Tugboat Slipway"><div class="modal-img-caption">Hull Slipway Positioning</div></div>
+        <div class="modal-img-card"><img src="Project_1_10.jpeg" alt="Main Engine Room"><div class="modal-img-caption">Engine Room Auxiliary Piping</div></div>
+        <div class="modal-img-card"><img src="Project_1_9.jpeg" alt="Bow Fendering"><div class="modal-img-caption">Bow Thruster & Fendering</div></div>
+        <div class="modal-img-card"><img src="Project_1_7.jpeg" alt="Shipyard Fitting Out"><div class="modal-img-caption">Fitting-Out Berth Crane Ops</div></div>
+        <div class="modal-img-card"><img src="Project_1_3.jpeg" alt="Cable Trays"><div class="modal-img-caption">Electrical Cable Trays</div></div>
+        <div class="modal-img-card"><img src="Project_1_4.jpeg" alt="HVAC CAD Layout"><div class="modal-img-caption">HVAC Ducting CAD Plan</div></div>
+      </div>
+
+      <h3 style="font-family: var(--font-mono); color: var(--cyan-bright); margin-top: 1.5rem;">// KEY RESPONSIBILITIES & SCOPE</h3>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; font-size: 0.9rem; margin-top: 0.5rem;">
+        <li>Managed total package procurement for Tugboat-1 and Tugboat-2 on behalf of A.K. Sobhan Traders.</li>
+        <li>Coordinated international OEM engineers for main engines, z-drive propulsion, and towing winches.</li>
+        <li>Inspected engine room cable trays, HVAC floor-mounted ducting (150x150mm & 400x150mm), and fire dampers.</li>
+        <li>Facilitated Harbour Acceptance Tests (HAT) pre-commissioning checklists and vessel readiness.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="modal-2" class="modal">
+    <div class="modal-container">
+      <button onclick="closeModal('modal-2')" class="modal-close">&times;</button>
+      <span class="section-tag">// PROJECT 02 SPECIFICATIONS</span>
+      <h2 style="font-family: var(--font-heading); color: #fff; margin-bottom: 1rem;">36m Research Vessel Design & Analysis</h2>
+      
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        Complete preliminary design, structural evaluation, and CFD hydrodynamics for a 36-meter research vessel.
+      </p>
+
+      <div class="modal-gallery">
+        <div class="modal-img-card"><img src="Project_2_1.jpeg" alt="AutoCAD GA"><div class="modal-img-caption">Multi-Deck AutoCAD GA Plan</div></div>
+        <div class="modal-img-card"><img src="Project_2_2.jpeg" alt="Rhino 3D Model"><div class="modal-img-caption">3D Parametric Rhino Hull</div></div>
+        <div class="modal-img-card"><img src="Project_2_3.jpeg" alt="BV Midship Section"><div class="modal-img-caption">Frame 19 Midship CAD</div></div>
+        <div class="modal-img-card"><img src="Project_2_4.jpeg" alt="ANSYS CFD Wave"><div class="modal-img-caption">ANSYS Fluent CFD Wave Contour</div></div>
+        <div class="modal-img-card"><img src="Project_2_5.jpeg" alt="Bureau Veritas Check"><div class="modal-img-caption">BV 100% Efficiency Solver</div></div>
+      </div>
+
+      <h3 style="font-family: var(--font-mono); color: var(--cyan-bright); margin-top: 1.5rem;">// TECHNICAL HIGHLIGHTS</h3>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; font-size: 0.9rem; margin-top: 0.5rem;">
+        <li>Designed multi-deck General Arrangement (Bridge, Main, Lower Deck) optimized for scientific research laboratories.</li>
+        <li>Modeled 3D hull geometry in Rhino 3D incorporating an optimized bulbous bow.</li>
+        <li>Calculated 100% bending & shear efficiency under Bureau Veritas class rules.</li>
+        <li>Executed ANSYS Fluent CFD simulations to evaluate free-surface wave pattern drag.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div id="modal-3" class="modal">
+    <div class="modal-container">
+      <button onclick="closeModal('modal-3')" class="modal-close">&times;</button>
+      <span class="section-tag">// PROJECT 03 SPECIFICATIONS</span>
+      <h2 style="font-family: var(--font-heading); color: #fff; margin-bottom: 1rem;">48-ft Catamaran Piping System Design</h2>
+
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        3D spatial routing, 2D isometric spool schematics, and 4-zone bilge system design for a 48ft catamaran (ODC48).
+      </p>
+
+      <div class="modal-gallery">
+        <div class="modal-img-card"><img src="Project_3_1.jpeg" alt="Isometric Spool Tagging"><div class="modal-img-caption">2D Isometric Spool & Valve Tags</div></div>
+        <div class="modal-img-card"><img src="Project_3_2.jpeg" alt="Rhino 3D Routing"><div class="modal-img-caption">3D Multi-System Rhino Routing</div></div>
+        <div class="modal-img-card"><img src="Project_3_3.jpeg" alt="3D Component Layout"><div class="modal-img-caption">3D Equipment & Hull Placement</div></div>
+      </div>
+
+      <h3 style="font-family: var(--font-mono); color: var(--cyan-bright); margin-top: 1.5rem;">// PIPING & BILGE SYSTEM SPECS</h3>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; font-size: 0.9rem; margin-top: 0.5rem;">
+        <li>Routed fuel oil, fresh water, bilge, ballast, and HVAC piping across port and starboard hulls in Rhino 3D.</li>
+        <li>Designed ODC48 4-zone bilge partition layout (BS1 to BS4) using 2000 GPH electric pumps.</li>
+        <li>Specified 300x100x4mm aluminum mounting plate bases welded at mid-height along the keel structure.</li>
+        <li>Drafted 2D isometric spool drawings with unique part callouts (BAS-80-S1 through S68).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div id="modal-4" class="modal">
+    <div class="modal-container">
+      <button onclick="closeModal('modal-4')" class="modal-close">&times;</button>
+      <span class="section-tag">// PROJECT 04 SPECIFICATIONS</span>
+      <h2 style="font-family: var(--font-heading); color: #fff; margin-bottom: 1rem;">1800 DWT Inland Cargo Vessel Design</h2>
+
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        Preliminary hull design, lines plan, shell expansion, and hydrostatic offset calculations for the Dhaka-Chattogram route.
+      </p>
+
+      <div class="modal-gallery">
+        <div class="modal-img-card"><img src="01_Profile_and_Half_Breadth_Plan.jpg" alt="Lines Plan"><div class="modal-img-caption">Body Plan & Half-Breadth Lines</div></div>
+        <div class="modal-img-card"><img src="02_Shell_Expansion.jpg" alt="Shell Expansion Scantlings"><div class="modal-img-caption">Shell Expansion Plate Layout</div></div>
+        <div class="modal-img-card"><img src="03_General_Arrangement.jpg" alt="Vessel GA Drafting"><div class="modal-img-caption">Multi-Hold General Arrangement</div></div>
+        <div class="modal-img-card"><img src="04_Waterlines_Table.jpg" alt="Waterlines Table"><div class="modal-img-caption">Station Waterlines Data Table</div></div>
+        <div class="modal-img-card"><img src="05_Offsets_Table.jpg" alt="Offsets Table"><div class="modal-img-caption">Hydrostatic Offsets Table</div></div>
+      </div>
+
+      <h3 style="font-family: var(--font-mono); color: var(--cyan-bright); margin-top: 1.5rem;">// NAVAL ARCHITECTURE PARAMETERS</h3>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; font-size: 0.9rem; margin-top: 0.5rem;">
+        <li>Calculated shell expansion plate scantlings: Keel (12mm), Bilge (11mm), Bottom (10mm), Shell (10mm).</li>
+        <li>Drafted lines plan with 6826mm station spacing and WL-1 through WL-14 offsets.</li>
+        <li>Developed 3-hold GA layout for maximum river freight efficiency between Dhaka and Chattogram.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    };
+  </script>
 </body>
 </html>
